@@ -1,0 +1,8 @@
+#A ti mismo 
+.gitgnore 
+
+#Modulos NodeJs 
+node_modules
+
+#Credenciales
+.env
