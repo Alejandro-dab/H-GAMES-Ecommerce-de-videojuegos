@@ -1,11 +1,12 @@
 //* Importaciones
 const conexion = require('../bd/bd'); //Pool de conexiones 
-const bcrypt = require('bcrypt'); //Algoritmo hashing para encriptar contraseñas
+
+const bcrypt = require('bcrypt'); //Algoritmo hashing para contraseñas 
 
 //* Registrar Uusario 
 const registrarUsuario = async (peticion, respuesta) => { 
     try{
-        const {nombre_usuario, email, password_usuario, rol} = peticion.body; 
+        const {nombre_usuario, email, password_usuario} = peticion.body; 
         
         if(!email || !password_usuario){
             return respuesta.status(400).json({
@@ -23,7 +24,7 @@ const registrarUsuario = async (peticion, respuesta) => {
             nombre_usuario, 
             email, 
             password_hasheada,
-            rol || false
+            false //False será automaticamente agregado como rol al crear un registro
             ]
         ) 
 
@@ -40,7 +41,7 @@ const registrarUsuario = async (peticion, respuesta) => {
         }
         console.error(error);
         return respuesta.status(500).json({
-            error: 'Error al conectar a la base de datos'
+            error: 'Error al registrar usuario'
         });
     }
 };
