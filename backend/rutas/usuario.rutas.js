@@ -6,6 +6,7 @@ const express = require('express') //Importamos el modulo de Express
 const router = express.Router();
 
 //Extraemos la función registrarUsuario de usuario.controlador.js 
+//? Aquí si ponemos los ../ para que salga de la carpeta rutas y entre a controladores
 const {registrarUsuario} = require('../controladores/usuario.controlador');
 
 //Definición del endpoint para ser llamado por el cliente 
